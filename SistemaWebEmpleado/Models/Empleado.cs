@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using SistemaWebEmpleado.Validations;
+using System.ComponentModel.DataAnnotations;
 
 namespace SistemaWebEmpleado.Models
 {
@@ -12,6 +13,7 @@ namespace SistemaWebEmpleado.Models
         [Required]
         public string Dni { get; set; }
         [Required]
+        [ValLegajo]
         public string Legajo { get; set; }
         [Required]
         public string Titulo { get; set; }

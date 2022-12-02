@@ -3,6 +3,8 @@ using SistemaWebEmpleado.Data;
 using SistemaWebEmpleado.Models;
 using System.Collections.Generic;
 using System.Linq;
+using System;
+using Microsoft.EntityFrameworkCore;
 
 namespace SistemaWebEmpleado.Controllers
 {
@@ -52,6 +54,75 @@ namespace SistemaWebEmpleado.Controllers
                                     where p.Titulo == titulo
                                     select p).ToList();
             return View("Index", lista);
+        }
+
+        //---------------------------2daParte--------------------------//
+
+        // GET: /empleado/Delete/id 
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+
+            Empleado empleado = _context.Empleados.Find(id);
+
+
+            return View("Delete", empleado);
+
+        }
+
+        //POST /empleado/delete
+        [HttpPost]
+        [ActionName("Delete")]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Empleado empleado = _context.Empleados.Find(id);
+            if (empleado != null)
+            {
+                _context.Empleados.Remove(empleado);
+                _context.SaveChanges();
+            }
+
+            return RedirectToAction("Index");
+        }
+
+
+
+
+
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+
+            Empleado empleado = _context.Empleados.Find(id);
+
+            return View("Edit", empleado);
+
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Empleado empleado)
+        {
+
+            if (ModelState.IsValid)
+            {
+
+                _context.Entry(empleado).State = EntityState.Modified;
+                _context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(empleado);
+
+        }
+
+
+        //GET
+        public ActionResult Details(int id)
+        {
+            Empleado empleado = _context.Empleados.Find(id);
+
+                return View(empleado);
+           
         }
     }
 }
