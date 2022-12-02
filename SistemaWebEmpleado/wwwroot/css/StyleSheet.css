@@ -1,0 +1,35 @@
+﻿body {
+    
+    
+}
+
+header {
+    display: flex;
+    background-color: #35B6CD;
+    height: 200px;
+    align-content: center;
+    justify-content: center;
+    justify-items: center;
+    justify-self: center;
+}
+
+nav {
+    display: flex;
+    align-items: flex-end;
+    background-color: #7FCB56;
+    height: 60px;
+    justify-content: flex-end;
+    color: white;
+    
+}
+
+footer {
+    background-color: #35B6CD;
+    justify-content: center;
+    color: black;
+    height: 35px;
+}
+
+footer h3{
+    text-align:center;
+}
